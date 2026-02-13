@@ -14,4 +14,13 @@ libraryDependencies += "org.apache.spark" %% "spark-sql" % "3.5.5"
 // https://mvnrepository.com/artifact/org.apache.hadoop/hadoop-aws
 libraryDependencies += "org.apache.hadoop" % "hadoop-aws" % "3.3.4"
 libraryDependencies += "com.amazonaws" % "aws-java-sdk-bundle" % "1.12.262"
+libraryDependencies ++= Seq(
+  "org.apache.spark" %% "spark-sql" % "3.5.0",
+  "org.apache.hadoop" % "hadoop-aws" % "3.3.4",
+  "com.amazonaws" % "aws-java-sdk-bundle" % "1.12.262"
+)
 
+assembly / assemblyMergeStrategy := {
+  case PathList("META-INF", xs @ _*) => MergeStrategy.discard
+  case x => MergeStrategy.first
+}
